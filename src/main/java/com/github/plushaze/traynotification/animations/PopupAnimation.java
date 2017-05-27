@@ -25,7 +25,7 @@ final class PopupAnimation extends AbstractAnimation {
 		tl.setOnFinished(e -> {
 			trayIsShowing = false;
 			stage.close();
-			stage.setLocation(stage.getBottomRight());
+			stage.setLocation(stage.getLocation());
 		});
 
 		return tl;
@@ -35,10 +35,10 @@ final class PopupAnimation extends AbstractAnimation {
 	protected Timeline setupShowAnimation() {
 		Timeline tl = new Timeline();
 
-		KeyValue kv1 = new KeyValue(stage.yLocationProperty(), stage.getBottomRight().getY() + stage.getWidth());
+		KeyValue kv1 = new KeyValue(stage.yLocationProperty(), stage.getLocation().getY() + stage.getWidth());
 		KeyFrame kf1 = new KeyFrame(Duration.ZERO, kv1);
 
-		KeyValue kv2 = new KeyValue(stage.yLocationProperty(), stage.getBottomRight().getY());
+		KeyValue kv2 = new KeyValue(stage.yLocationProperty(), stage.getLocation().getY());
 		KeyFrame kf2 = new KeyFrame(Duration.millis(1000), kv2);
 
 		KeyValue kv3 = new KeyValue(stage.opacityProperty(), 0.0);

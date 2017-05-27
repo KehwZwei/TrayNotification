@@ -21,7 +21,7 @@ final class SlideAnimation extends AbstractAnimation {
 
 		// Animates the Tray onto the screen and interpolates at a tangent for 300 millis
 		Interpolator interpolator = Interpolator.TANGENT(Duration.millis(300), 50);
-		KeyValue kvInter = new KeyValue(stage.xLocationProperty(), stage.getBottomRight().getX(), interpolator);
+		KeyValue kvInter = new KeyValue(stage.xLocationProperty(), stage.getLocation().getX(), interpolator);
 		KeyFrame frame2 = new KeyFrame(Duration.millis(1300), kvInter);
 
 		// Sets opacity to 0 instantly
@@ -61,7 +61,7 @@ final class SlideAnimation extends AbstractAnimation {
 		tl.setOnFinished(e -> {
 			trayIsShowing = false;
 			stage.close();
-			stage.setLocation(stage.getBottomRight());
+			stage.setLocation(stage.getLocation());
 		});
 
 		return tl;
